@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/chandelier/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/chandelier/static/js/main.58a5393c.chunk.js",
+    "main.js.map": "/chandelier/static/js/main.58a5393c.chunk.js.map",
+    "runtime-main.js": "/chandelier/static/js/runtime-main.a4d03ac4.js",
+    "runtime-main.js.map": "/chandelier/static/js/runtime-main.a4d03ac4.js.map",
+    "static/js/2.5e10bfa0.chunk.js": "/chandelier/static/js/2.5e10bfa0.chunk.js",
+    "static/js/2.5e10bfa0.chunk.js.map": "/chandelier/static/js/2.5e10bfa0.chunk.js.map",
+    "static/js/3.23b5ee4b.chunk.js": "/chandelier/static/js/3.23b5ee4b.chunk.js",
+    "static/js/3.23b5ee4b.chunk.js.map": "/chandelier/static/js/3.23b5ee4b.chunk.js.map",
+    "index.html": "/chandelier/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/chandelier/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.5e10bfa0.chunk.js.LICENSE.txt": "/chandelier/static/js/2.5e10bfa0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a4d03ac4.js",
+    "static/js/2.5e10bfa0.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.58a5393c.chunk.js"
+  ]
+}
