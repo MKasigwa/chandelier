@@ -1,15 +1,19 @@
 // import logo from './logo.svg';
 // import './App.css';
 import React, {useState, useRef} from 'react';
-import {Container, Card, CardContent, makeStyles, Grid, TextField, Button} from '@material-ui/core';
+import {Container, Card, CardContent, makeStyles, Grid, Button} from '@material-ui/core';
 import QRCode from 'qrcode';
 import QrReader from 'react-qr-reader';
+import {checkServices} from "./_services";
+import FullPageLoader from "./_components/FullPageLoader/FullPageLoader";
 function App() {
   const [text, setText] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [scanResultFile, setScanResultFile] = useState('');
   const [scanResultWebCam, setScanResultWebCam] =  useState('');
   const [scan, setscan] = useState(false);
+  const [result, setresult] = useState(null);
+  const [loading, setloading] = useState(false);
   const classes = useStyles();
   const qrRef = useRef(null);
 
@@ -27,7 +31,12 @@ function App() {
   }
   const handleScanFile = (result) => {
       if (result) {
-          setScanResultFile(result);
+          // setScanResultFile(result);
+          checkServices.check(result).then(ret=>{
+            console.log("Resultat",ret);
+          }).catch(error=>{
+            console.log("Erreur : ",error);
+          })
       }
   }
   const onScanFile = () => {
@@ -37,9 +46,20 @@ function App() {
     console.log(error);
   }
   const handleScanWebCam = (result) => {
-    if (result){
-        setScanResultWebCam(result);
-    }
+    // if (result){
+    //     setScanResultWebCam(result);
+    // }
+    if (result) {
+      setloading(true);
+      checkServices.check(result).then(ret=>{
+        setscan(false);
+        setresult(ret.data);
+        setloading(false);
+      }).catch(error=>{
+        setloading(false);
+        console.log("Erreur : ",error);
+      })
+  }
    }
   const  handleScan = (decision)=>{
     setscan(decision);
@@ -76,6 +96,13 @@ function App() {
                         />
                         <h3>Scanned Code: {scanResultFile}</h3>
                       </Grid> */}
+                      {result===true ? (
+                        <h1>Good </h1>
+                      ) : (
+
+                        <h1>Bad </h1>
+                      )}
+
                       {scan && (
                       <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
                          <h3>Qr Code Scan by Web Cam</h3>
@@ -90,9 +117,12 @@ function App() {
                             color="danger" onClick={handleScan.bind(this,false)}>Stop scanning</Button>
                       </Grid>
                       )}
+
+
                   </Grid>
               </CardContent>
           </Card>
+          <FullPageLoader loading={loading}/>
     </Container>
   );
 }
