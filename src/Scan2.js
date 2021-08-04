@@ -58,37 +58,61 @@ import imageNotValid from "./notvalid.jpeg";
 
 
     return (
-        // <div>
-        //     <h2>Scan {props.match.params.number}</h2>
-        // </div>
+      <div className="w-full flex flex-col justify-center items-center">
+        
         <Container className={classes.conatiner}>
+       
+        {/* <div>
+            <h2>Scan {props.match.params.number}</h2>
+        </div> */}
         <Card>
-              <h2 className={classes.title}>Groupe Musical Chandelier de Gloire</h2>
-              <Avatar alt="Logo" src={imageLogo} className={classes.large2}/>
+              {/* <h2 className={classes.title}>Groupe Musical Chandelier de Gloire</h2> */}
+              {/* <Avatar alt="Logo" src={imageLogo} className={classes.large2}/> */}
               {scan ===false && (
               <Grid container spacing={2} justify="center"
                       alignItems="center">
-              <Button size="large" variant="contained" className={classes.btn} 
-                            color="primary" onClick={handleScan.bind(this,true)} disableElevation>Scan Now</Button>
-                           </Grid>
+              {/* <Button size="large" variant="contained" className={classes.btn} 
+                            color="primary" onClick={handleScan.bind(this,true)} disableElevation>Scan Now</Button> */}
+                            </Grid>
                            )}
               <CardContent>
-               
+
+              {scan ===false && result===null && (
+                 <Grid container spacing={2} justify="center"
+                 alignItems="center">
+      <button className="bg-gradient-to-r from-gray-900 to-teal-900 mt-8 w-64 h-64 p-2 mb-4 rounded-full text-teal-100 font-bold text-lg hover:text-orange-600" onClick={handleScan.bind(this,true)}>Scan now</button>
+      </Grid>
+      )}
+                  
                   <Grid container spacing={2} justify="center"
                       alignItems="center">
                       {result===true && (
+                        <>
+                      <div className="w-full mb-4 flex justify-between items-center">
+                      <div className="mx-4">
+                      <button className="bg-gradient-to-r from-gray-900 to-teal-900 mt-4 text-teal-100 px-8 py-4 rounded-lg text-lg font-bold" onClick={handleScan.bind(this,true)}>Scan now</button>
+                      </div>
+                      <div className="mx-4">
+                      <button className="bg-gradient-to-r from-red-900  to-red-500 mt-4 text-teal-100 px-8 py-4 rounded-lg text-lg font-bold">Set Enter</button>
+                      </div>
+                      </div>
                         <Avatar alt="Logo" src={imageValid} className={classes.large}/>
+                        </>
                       )}
 
                       {result ===false && result!==null && (
+                       <div className="flex flex-col justify-center items-center">
+                        <button className="bg-gradient-to-r from-gray-900 mt-8 to-teal-900 text-teal-100 px-8 py-4 rounded-lg text-lg font-bold" onClick={handleScan.bind(this,true)}>Scan now</button>
+                        
                           <Avatar alt="Logo" src={imageNotValid} className={classes.large}/>
+                          </div>
                         )}
                       {scan && (
                           
                       <Grid item xl={4} lg={4} md={6} sm={12} xs={12}
                       direction="row"
                       justify="center"
-                      alignItems="center">
+                      alignItems="center" >
                          <h3>Qr Code Scan by Web Cam</h3>
                          <QrReader
                          delay={300}
@@ -114,10 +138,11 @@ import imageNotValid from "./notvalid.jpeg";
                   </Grid>
               </CardContent>
               
-              <h2 className={classes.footer}>Copyright @ Chandelier de gloire 2021</h2>
+              {/* <h2 className={classes.footer}>Copyright @ Chandelier de gloire 2021</h2> */}
           </Card>
         <FullPageLoader loading={loading}/>
   </Container>
+  </div>
     )
 }
 const useStyles = makeStyles((theme) => ({
