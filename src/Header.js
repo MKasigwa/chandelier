@@ -22,7 +22,7 @@ function Header({ children }) {
         <div>
             <div style={phantom} />
             <div style={style}>
-                <h1>Célebration Motole</h1>
+                <h1>CROWN Celebration</h1>
             </div>
         </div>
     )
