@@ -23,7 +23,7 @@ function Footer({ children }) {
         <div>
             <div style={phantom} />
             <div style={style}>
-                <h1>INFOLINE +243979003656</h1>
+                <h1>INFOLINE +243974734966</h1>
             </div>
         </div>
     )
